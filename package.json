@@ -1,0 +1,10 @@
+{
+  "name": "habitica-hiscord-party-tools",
+  "version": "0.1.0",
+  "description": "A set of APIs for working with your Habitica party",
+  "main": "index.js",
+  "repository": "git@github.com:JSn1nj4/habitica-discord-party-tools.git",
+  "author": "Elliot Derhay <e.j.derhay@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
