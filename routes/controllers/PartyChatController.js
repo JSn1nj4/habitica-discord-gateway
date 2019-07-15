@@ -8,12 +8,12 @@ class PartyChatController {
     res.sendStatus(200)
   }
 
-  sendMessage(req, res) {
-    this.sendMessageHandler(req);
+  sendMessageHandler(req, res) {
+    this.sendMessage(req);
     res.sendStatus(200)
   }
 
-  async sendMessageHandler(req) {
+  async sendMessage(req) {
     console.log(req)
   }
 }

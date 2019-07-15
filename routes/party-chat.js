@@ -6,6 +6,6 @@ const partyChat = new PartyChatController()
 // router
 partyRouter.get('/', (req, res) => partyChat.index(req, res))
 partyRouter.get('/send-message', (req, res) => partyChat.index(req, res))
-partyRouter.post('/send-message', (req, res) => partyChat.sendMessage(req, res))
+partyRouter.post('/send-message', (req, res) => partyChat.sendMessageHandler(req, res))
 
 module.exports = partyRouter
