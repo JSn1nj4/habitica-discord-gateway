@@ -6,6 +6,9 @@
   "repository": "git@github.com:JSn1nj4/habitica-discord-party-tools.git",
   "author": "Elliot Derhay <e.j.derhay@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "10.15.3"
+  },
   "private": true,
   "scripts": {
     "dev": "node app.js",
