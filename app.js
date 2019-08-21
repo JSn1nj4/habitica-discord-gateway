@@ -11,6 +11,5 @@ app.use('/', routes);
 app.use(Sentry.Handlers.errorHandler())
 
 app.listen(port, () => {
-  Sentry.captureMessage(`Server running on port ${port}`);
   console.log(`Server running on port ${port}`)
 })

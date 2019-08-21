@@ -17,7 +17,6 @@ class PartyChatController {
 
   async sendMessage(req) {
     console.log(req.body)
-    Sentry.captureMessage(`Request body: ${req.body}`);
   }
 }
 
