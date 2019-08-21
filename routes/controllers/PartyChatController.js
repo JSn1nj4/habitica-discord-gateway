@@ -5,8 +5,7 @@ class PartyChatController {
   }
 
   index(req, res) {
-    // res.sendStatus(200)
-    throw new Error('My first sentry error!')
+    res.sendStatus(200)
   }
 
   sendMessageHandler(req, res) {
