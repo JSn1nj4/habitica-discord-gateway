@@ -1,3 +1,5 @@
+const Sentry = require("@sentry/node")
+
 // Controller
 class PartyChatController {
   constructor() {
@@ -15,6 +17,7 @@ class PartyChatController {
 
   async sendMessage(req) {
     console.log(req.body)
+    Sentry.captureMessage(`Request body: ${req.body}`);
   }
 }
 
