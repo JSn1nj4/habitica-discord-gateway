@@ -10,7 +10,7 @@ Sentry.init({ dsn: `https://${ process.env.SENTRY_KEY }@sentry.io/1537673` })
 app.use(Sentry.Handlers.requestHandler())
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/', routes)
 app.use(Sentry.Handlers.errorHandler())
