@@ -1,6 +1,3 @@
-const Sentry = require("@sentry/node")
-
-// Controller
 class PartyChatController {
   constructor() {
 
