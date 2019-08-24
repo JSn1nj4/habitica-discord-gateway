@@ -3,7 +3,7 @@ const app = require('express')()
 const Sentry = require("@sentry/node")
 const bodyParser = require('body-parser')
 const routes = require('./routes')
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3300;
 
 Sentry.init({ dsn: `https://${ process.env.SENTRY_KEY }@sentry.io/1537673` })
 
