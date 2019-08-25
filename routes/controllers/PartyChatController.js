@@ -13,8 +13,7 @@ class PartyChatController {
   }
 
   async sendMessage(req) {
-    // console.log(req.body)
-    console.log(req)
+    console.log(req.body)
   }
 }
 
