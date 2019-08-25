@@ -1,28 +1,72 @@
 const Joi = require('@hapi/joi')
 
+const uuidVersions = [
+  'uuidv3',
+  'uuidv4',
+  'uuidv5',
+]
+
 const body = Joi.object().keys({
   group: Joi.object().keys({
-    id: Joi.string().uuid(), // need UUID version
+
+    id: Joi.string().uuid({
+      version: uuidVersions,
+    }),
     name: Joi.string()
-  }),
+    
+  }).required(),
+
   chat: Joi.object().keys({
+
     flagCount: Joi.number().integer(),
-    flags: Joi.object(), // needs better definition
-    _id: Joi.string().uuid(), // need UUID version
-    id: Joi.string().uuid(), // need UUID version
-    // text: string
-    // info: [Object] (needs testing)
-    // timestamp
-    // likes: object (needs looking into)
-    // uuid (uuid or "system")
-    // groupdid (group's UUID)
+    flags: Joi.object(), // needs definition
+
+    _id: Joi.string().uuid({
+      version: uuidVersions,
+    }),
+    id: Joi.string().uuid({
+      version: uuidVersions,
+    }),
+
+    text: Joi.string(),
+    info: Joi.object(), // needs definition
+    timestamp: Joi.date().iso(),
+    likes: Joi.object(), // needs definition
+    client: Joi.string(), // need list of possible clients
+
+    uuid: Joi.alternatives().try(
+      Joi.string().uuid({
+        version: uuidVersions,
+      }),
+      Joi.string().valid('system'),
+    ).required(),
+
+    contributor: Joi.object(), // needs definition
+    backer: Joi.object(), // needs definition
+    user: Joi.string(),
+    username: Joi.string(),
+
+    groupdid: Joi.string().uuid({
+      version: uuidVersions,
+    }).required(),
+
+    userStyles: Joi.object(), //needs definition
+
+  }).required(),
+
+  webhookType: Joi.string()
+    .valid('groupChatReceived')
+    .required(),
+  
+  user: Joi.object().keys({
+    _id: Joi.string().uuid({
+      version: uuidVersions,
+    }),
   }),
-  // webhookType: groupChatReceived
-  // user: object w/ _id
 })
 
 const schemas = {
-  body
+  body,
 }
 
 module.exports = schemas
