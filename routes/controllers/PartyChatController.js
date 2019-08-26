@@ -15,31 +15,31 @@ class PartyChatController {
   async sendMessage(req) {
     // console.log(req.body)
     console.log('Request body pieces:');
-    let body = req.body;
+    let chat = req.body.chat;
 
-    if(body.info && body.info !== {}) {
-      console.log('body.info:');
-      console.log(body.info);
+    if(chat.info && chat.info !== {}) {
+      console.log('chat.info:');
+      console.log(chat.info);
     }
 
-    if(body.likes && body.likes !== {}) {
-      console.log('body.likes:');
-      console.log(body.likes);
+    if(chat.likes && chat.likes !== {}) {
+      console.log('chat.likes:');
+      console.log(chat.likes);
     }
 
-    if(body.contributor && body.contributor !== {}) {
-      console.log('body.contributor:');
-      console.log(body.contributor);
+    if(chat.contributor && chat.contributor !== {}) {
+      console.log('chat.contributor:');
+      console.log(chat.contributor);
     }
 
-    if(body.backer && body.backer !== {}) {
-      console.log('body.backer:');
-      console.log(body.backer);
+    if(chat.backer && chat.backer !== {}) {
+      console.log('chat.backer:');
+      console.log(chat.backer);
     }
 
-    if(body.userStyles && body.userStyles !== {}) {
-      console.log('body.userStyles:');
-      console.log(body.userStyles);
+    if(chat.userStyles && chat.userStyles !== {}) {
+      console.log('chat.userStyles:');
+      console.log(chat.userStyles);
     }
   }
 }
