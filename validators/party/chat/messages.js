@@ -29,9 +29,9 @@ const body = Joi.object({
     }),
 
     text: Joi.string(),
-    info: Joi.object(), // needs definition
+    info: Joi.object().strip(), // currently unnecessary
     timestamp: Joi.date().iso(),
-    likes: Joi.object(), // needs definition
+    likes: Joi.object().strip(), // currently unnecessary
     client: Joi.string().valid('android', 'ios', 'web'), // need list of possible clients
 
     uuid: Joi.alternatives().try(
@@ -41,8 +41,8 @@ const body = Joi.object({
       Joi.string().valid('system'),
     ).required(),
 
-    contributor: Joi.object(), // needs definition
-    backer: Joi.object(), // needs definition
+    contributor: Joi.object().strip(), // currently unnecessary
+    backer: Joi.object().strip(), // currently unnecessary
     user: Joi.string(),
     username: Joi.string(),
 
@@ -50,7 +50,7 @@ const body = Joi.object({
       version: uuidVersions,
     }).required(),
 
-    userStyles: Joi.object(), //needs definition
+    userStyles: Joi.object().strip(), // currently unnecessary
 
   }).required(),
 
