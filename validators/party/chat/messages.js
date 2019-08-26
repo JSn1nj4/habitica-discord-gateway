@@ -63,6 +63,10 @@ const body = Joi.object({
       version: uuidVersions,
     }),
   }),
+}).options({
+  stripUnknown: { // remove any object keys not known by the schema
+    objects: true
+  },
 })
 
 const schemas = {
