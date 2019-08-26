@@ -6,8 +6,8 @@ const uuidVersions = [
   'uuidv5',
 ]
 
-const body = Joi.object().keys({
-  group: Joi.object().keys({
+const body = Joi.object({
+  group: Joi.object({
 
     id: Joi.string().uuid({
       version: uuidVersions,
@@ -16,7 +16,7 @@ const body = Joi.object().keys({
 
   }).required(),
 
-  chat: Joi.object().keys({
+  chat: Joi.object({
 
     flagCount: Joi.number().integer(),
     flags: Joi.object(), // needs definition
