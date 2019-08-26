@@ -13,7 +13,7 @@ const body = Joi.object().keys({
       version: uuidVersions,
     }),
     name: Joi.string()
-    
+
   }).required(),
 
   chat: Joi.object().keys({
@@ -32,7 +32,7 @@ const body = Joi.object().keys({
     info: Joi.object(), // needs definition
     timestamp: Joi.date().iso(),
     likes: Joi.object(), // needs definition
-    client: Joi.string(), // need list of possible clients
+    client: Joi.string().valid('android', 'ios', 'web'), // need list of possible clients
 
     uuid: Joi.alternatives().try(
       Joi.string().uuid({
@@ -57,7 +57,7 @@ const body = Joi.object().keys({
   webhookType: Joi.string()
     .valid('groupChatReceived')
     .required(),
-  
+
   user: Joi.object().keys({
     _id: Joi.string().uuid({
       version: uuidVersions,
