@@ -1,3 +1,4 @@
+const { Sentry } = require('../../config')
 const messageSchemas = require('../../validators/party/chat/messages')
 
 class PartyChatController {
@@ -28,7 +29,7 @@ class PartyChatController {
 
   logError(error) {
     console.log(error)
-    throw new Error(`${error.name}: ${error.details}. ${error._object}`)
+    Sentry.captureMessage('Data validation error')
   }
 }
 
