@@ -46,7 +46,7 @@ const body = Joi.object({
     user: Joi.string(),
     username: Joi.string(),
 
-    groupId: Joi.string().uuid({
+    groupdid: Joi.string().uuid({
       version: uuidVersions,
     }).required(),
 
