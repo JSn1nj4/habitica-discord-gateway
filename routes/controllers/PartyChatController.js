@@ -26,9 +26,9 @@ class PartyChatController {
     console.log(data)
   }
 
-  logError(data) {
-    console.log('Data with error: ')
-    console.log(data)
+  logError(error) {
+    console.log(error)
+    throw new Error(`${error.name}: ${error.details}. ${error._object}`)
   }
 }
 
