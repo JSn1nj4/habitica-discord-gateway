@@ -69,8 +69,8 @@ const body = Joi.object({
   },
 })
 
-const schemas = {
+const messageSchemas = {
   body,
 }
 
-module.exports = schemas
+module.exports = messageSchemas
