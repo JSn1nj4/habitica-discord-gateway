@@ -46,8 +46,7 @@ const body = Joi.object({
     user: Joi.string(),
     username: Joi.string(),
 
-    // Change to "groupId" when done testing
-    groupid: Joi.string().uuid({
+    groupId: Joi.string().uuid({
       version: uuidVersions,
     }).required(),
 

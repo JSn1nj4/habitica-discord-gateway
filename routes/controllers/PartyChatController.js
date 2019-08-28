@@ -28,7 +28,6 @@ class PartyChatController {
   }
 
   logError(error) {
-    console.log(error)
     Sentry.captureException(error);
   }
 }
