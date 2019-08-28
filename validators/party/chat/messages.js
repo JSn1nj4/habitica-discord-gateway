@@ -55,9 +55,7 @@ const body = Joi.object({
 
   }).required(),
 
-  webhookType: Joi.string()
-    .valid('groupChatReceived')
-    .required(),
+  webhookType: Joi.string().valid('groupChatReceived').required(),
 
   user: Joi.object().keys({
     _id: Joi.string().uuid({
@@ -66,12 +64,10 @@ const body = Joi.object({
   }),
 }).options({
   stripUnknown: { // remove any object keys not known by the schema
-    objects: true
+    objects: true,
   },
 })
 
-const messageSchemas = {
+module.exports = {
   body,
 }
-
-module.exports = messageSchemas
