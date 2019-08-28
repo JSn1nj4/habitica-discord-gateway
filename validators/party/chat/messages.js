@@ -29,10 +29,8 @@ const body = Joi.object({
     }),
 
     text: Joi.string(),
-    info: Joi.object().strip(), // currently unnecessary
     timestamp: Joi.date().iso(),
-    likes: Joi.object().strip(), // currently unnecessary
-    client: Joi.string().valid('android', 'ios', 'web'), // need list of possible clients
+    client: Joi.string().valid('android', 'ios', 'web'),
 
     uuid: Joi.alternatives().try(
       Joi.string().uuid({
@@ -41,16 +39,12 @@ const body = Joi.object({
       Joi.string().valid('system'),
     ).required(),
 
-    contributor: Joi.object().strip(), // currently unnecessary
-    backer: Joi.object().strip(), // currently unnecessary
     user: Joi.string(),
     username: Joi.string(),
 
     groupId: Joi.string().uuid({
       version: uuidVersions,
     }).required(),
-
-    userStyles: Joi.object().strip(), // currently unnecessary
 
   }).required(),
 
