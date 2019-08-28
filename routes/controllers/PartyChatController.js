@@ -29,7 +29,7 @@ class PartyChatController {
 
   logError(error) {
     console.log(error)
-    Sentry.captureMessage('Data validation error')
+    Sentry.captureException(error);
   }
 }
 
