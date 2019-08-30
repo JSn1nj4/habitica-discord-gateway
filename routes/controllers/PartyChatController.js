@@ -65,12 +65,12 @@ class PartyChatController {
 
     req.on('error', this.logError)
 
-    req.write(msg);
-    req.end();
+    req.write(msg)
+    req.end()
   }
 
   logError(error) {
-    Sentry.captureException(error);
+    Sentry.captureException(error)
   }
 }
 
