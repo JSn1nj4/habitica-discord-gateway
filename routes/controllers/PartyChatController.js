@@ -51,7 +51,7 @@ class PartyChatController {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Content-Length': msg.length
+        'Content-Length': msg.length,
       }
     }
 
