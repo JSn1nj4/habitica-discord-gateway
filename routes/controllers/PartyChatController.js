@@ -1,6 +1,7 @@
 const { Sentry } = require('../../config')
 const messageSchemas = require('../../validators/party/chat/messages')
 const https = require('https')
+const zlib = require('zlib')
 
 class PartyChatController {
   constructor() {
@@ -52,6 +53,7 @@ class PartyChatController {
       headers: {
         'Content-Type': 'application/json',
         'Content-Length': msg.length,
+        'Content-Encoding': 'gzip',
       }
     }
 
@@ -67,8 +69,14 @@ class PartyChatController {
       this.logError(error)
     })
 
-    req.write(msg)
-    req.end()
+    zlib.gzip(msg, (error, result) => {
+      if(error) {
+        this.logError(error)
+      } else {
+        req.write(result)
+        req.end()
+      }
+    })
   }
 
   logError(error) {
