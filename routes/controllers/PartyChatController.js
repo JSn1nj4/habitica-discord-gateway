@@ -63,7 +63,9 @@ class PartyChatController {
       })
     })
 
-    req.on('error', this.logError)
+    req.on('error', (error) => {
+      this.logError(error)
+    })
 
     req.write(msg)
     req.end()
