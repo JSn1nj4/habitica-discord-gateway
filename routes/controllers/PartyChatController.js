@@ -28,13 +28,10 @@ class PartyChatController {
     console.log('Validated body object: ')
     console.log(data)
 
-    let msg = JSON.stringify({
+    let msg = {
       content: "New party message!",
       embeds: [
         {
-          author: {
-            name: data.chat.username || data.chat.uuid
-          },
           title: `${data.group.name} party chat`,
           text: data.chat.text,
           url: "https://habitica.com/party",
@@ -42,7 +39,13 @@ class PartyChatController {
           timestamp: data.chat.timestamp
         }
       ]
-    })
+    }
+
+    if(data.chat.username) {
+      msg.embeds[0].author = { name: data.chat.username }
+    }
+
+    let json = JSON.stringify(msg)
 
     // either wrap this in its own class or replace with Axios
     const options = {
@@ -52,7 +55,7 @@ class PartyChatController {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Content-Length': msg.length,
+        'Content-Length': json.length,
         'Content-Encoding': 'gzip',
       }
     }
@@ -69,7 +72,7 @@ class PartyChatController {
       this.logError(error)
     })
 
-    zlib.gzip(msg, (error, result) => {
+    zlib.gzip(json, (error, result) => {
       if(error) {
         this.logError(error)
       } else {
