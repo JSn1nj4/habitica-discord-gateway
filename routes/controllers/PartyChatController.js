@@ -20,8 +20,8 @@ class PartyChatController {
   async checkMessage(req) {
     // console.log(req.body)
     messageSchemas.body.validate(req.body)
-      .then(this.sendMessage)
-      .catch(this.logError)
+      .then(this.sendMessage.bind(this))
+      .catch(this.logError.bind(this))
   }
 
   sendMessage(data) {
@@ -68,9 +68,7 @@ class PartyChatController {
       })
     })
 
-    req.on('error', (error) => {
-      this.logError(error)
-    })
+    req.on('error', this.logError.bind(this))
 
     zlib.gzip(json, (error, result) => {
       if(error) {
