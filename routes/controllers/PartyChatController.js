@@ -32,7 +32,7 @@ class PartyChatController {
       embeds: [
         {
           title: `${data.group.name} party chat`,
-          text: data.chat.text,
+          description: data.chat.text,
           url: "https://habitica.com/party",
           color: 4401268,
           timestamp: data.chat.timestamp
