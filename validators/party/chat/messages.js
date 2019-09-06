@@ -29,6 +29,13 @@ const body = Joi.object({
     }),
 
     text: Joi.string(),
+    info: Joi.object({
+      type: Joi.string(),
+      user: Joi.string(),
+      class: Joi.string(),
+      spell: Joi.string(),
+    }),
+
     timestamp: Joi.date().iso(),
     client: Joi.string().valid('android', 'ios', 'web'),
 
