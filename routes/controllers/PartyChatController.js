@@ -31,7 +31,7 @@ class PartyChatController {
       content: "Party Notification :bell:",
       embeds: [
         {
-          title: `${data.group.name} party chat`,
+          title: data.group.name,
           description: data.chat.text,
           url: "https://habitica.com/party",
           color: 4401268,
