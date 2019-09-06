@@ -45,6 +45,10 @@ class PartyChatController {
       msg.content = "New Chat Message :speech_balloon:"
     }
 
+    if(data.chat.info && data.chat.info !== {}) {
+      msg.content = (data.chat.info.type === 'spell_cast_party' ? "Party Buffed :muscle:" : msg.content)
+    }
+
     let json = JSON.stringify(msg)
 
     // either wrap this in its own class or replace with Axios
