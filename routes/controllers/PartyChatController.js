@@ -28,7 +28,7 @@ class PartyChatController {
     console.log(data)
 
     let msg = {
-      content: "Party Notification :bell:",
+      content: "New Party Notification :bell:",
       embeds: [
         {
           title: data.group.name,
