@@ -3,6 +3,6 @@ const partyRouter = require('./party-chat')
 
 router.use('/party/chat', partyRouter)
 
-router.get('*', (req, res) => res.sendStatus(200));
+router.get('*', (req, res) => res.sendStatus(204));
 
 module.exports = router

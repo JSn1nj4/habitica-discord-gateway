@@ -8,12 +8,12 @@ class PartyChatController {
   }
 
   index(req, res) {
-    res.sendStatus(200)
+    res.sendStatus(204)
   }
 
   sendMessageHandler(req, res) {
     this.checkMessage(req);
-    res.sendStatus(200)
+    res.sendStatus(204)
   }
 
   async checkMessage(req) {
