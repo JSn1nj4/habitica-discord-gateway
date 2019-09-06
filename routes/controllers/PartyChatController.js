@@ -47,7 +47,7 @@ class PartyChatController {
 
     if(data.chat.info && data.chat.info !== {}) {
       msg.content = (data.chat.info.type === 'spell_cast_party' ? "Party Buffed :muscle:" : msg.content)
-      msg.content = (data.chat.info.type === 'spell_cast_user' ? "User Pranked :laughing:" : msg.content)
+      msg.content = (data.chat.info.type === 'spell_cast_user' ? "Party Member Pranked :laughing:" : msg.content)
     }
 
     let json = JSON.stringify(msg)
