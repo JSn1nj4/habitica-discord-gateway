@@ -28,7 +28,7 @@ class PartyChatController {
     console.log(data)
 
     let msg = {
-      content: "New party message!",
+      content: "Party Notification :bell:",
       embeds: [
         {
           title: `${data.group.name} party chat`,
@@ -37,11 +37,12 @@ class PartyChatController {
           color: 4401268,
           timestamp: data.chat.timestamp
         }
-      ]
+      ],
     }
 
     if(data.chat.username) {
       msg.embeds[0].author = { name: data.chat.username }
+      msg.content = "New Chat Message :speech_balloon:"
     }
 
     let json = JSON.stringify(msg)
