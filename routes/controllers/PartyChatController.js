@@ -45,10 +45,7 @@ class PartyChatController {
       msg.content = "**New Chat Message** :speech_balloon:"
     }
 
-    if(data.chat.info && data.chat.info !== {}) {
-      msg.content = (data.chat.info.type === 'spell_cast_party' ? "**Party Buffed** :muscle:" : msg.content)
-      msg.content = (data.chat.info.type === 'spell_cast_user' ? "**Party Member Pranked** :laughing:" : msg.content)
-    }
+    msg.content = this.buildMainMessageContent(data, msg.content);
 
     let json = JSON.stringify(msg)
 
@@ -80,6 +77,33 @@ class PartyChatController {
 
   logError(error) {
     Sentry.captureException(error)
+  }
+
+  buildMainMessageContent(data, defaultMsg) {
+    // Use the default message if the `data.chat.info` object doesn't exist
+    if(!data.chat.info || data.chat.info === {}) {
+      return defaultMsg
+    }
+
+    // partially destructure `data.chat` object
+    let { info } = data.chat
+
+    // Some notification types will only need 1 message option
+    if(info.type === 'spell_cast_party') return "**Party Buffed** :muscle:"
+    if(info.type === 'spell_cast_user') return "**Party Member Pranked** :laughing:"
+
+    // Message options for boss_damage notifications
+    if(info.type === 'boss_damage') {
+      if(parseInt(info.userDamage) <= 0) return "Oh no, **look out!** :scream_cat:"
+      if(parseInt(info.bossDamage) >= 10) return "Boss dealt a heavy blow! :dizzy_face:"
+      if(parseInt(info.userDamage) >= 40) return `${info.user} dealt a heavy blow! :boom:`
+
+      // default message for `boss_damage` chat type
+      return `${info.user} attacked Boss :crossed_swords:`
+    }
+
+    // Return the default message if no suitable alternative is found
+    return defaultMsg
   }
 }
 
