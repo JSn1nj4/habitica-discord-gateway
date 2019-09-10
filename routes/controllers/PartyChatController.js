@@ -45,7 +45,9 @@ class PartyChatController {
       msg.content = "**New Chat Message** :speech_balloon:"
     }
 
-    msg.content = this.buildMainMessageContent(data, msg.content);
+    if(data.chat.info && data.chat.info !== {}) {
+      msg.content = this.buildMainMessageContent(data.chat.info, msg.content);
+    }
 
     let json = JSON.stringify(msg)
 
@@ -79,31 +81,26 @@ class PartyChatController {
     Sentry.captureException(error)
   }
 
-  buildMainMessageContent(data, defaultMsg) {
-    // Use the default message if the `data.chat.info` object doesn't exist
-    if(!data.chat.info || data.chat.info === {}) {
-      return defaultMsg
+  buildMainMessageContent(info, defaultMsg) {
+    const types = {
+      spell_cast_party: "**Party Buffed** :muscle:",
+      spell_cast_user: "**Party Member Pranked** :laughing:",
+      boss_damage: this.buildBossDamageMessage // method used to get `boss_damage` message
     }
 
-    // partially destructure `data.chat` object
-    let { info } = data.chat
+    let msg = types[info.type]
+    if( msg.call ) msg = msg.call(this, info)
 
-    // Some notification types will only need 1 message option
-    if(info.type === 'spell_cast_party') return "**Party Buffed** :muscle:"
-    if(info.type === 'spell_cast_user') return "**Party Member Pranked** :laughing:"
+    return msg || defaultMsg
+  }
 
-    // Message options for boss_damage notifications
-    if(info.type === 'boss_damage') {
-      if(parseFloat(info.userDamage) <= 0) return "Oh no, **look out!** :scream_cat:"
-      if(parseFloat(info.bossDamage) >= 10) return "Boss dealt a heavy blow! :dizzy_face:"
-      if(parseFloat(info.userDamage) >= 40) return `${info.user} dealt a heavy blow! :boom:`
-
-      // default message for `boss_damage` chat type
-      return `${info.user} attacked Boss :crossed_swords:`
-    }
-
-    // Return the default message if no suitable alternative is found
-    return defaultMsg
+  buildBossDamageMessage(info) {
+    return (
+      parseFloat(info.userDamage) <= 0 ? "**Oh no, look out!** :scream_cat:"
+      : (parseFloat(info.bossDamage) >= 10 ? "Boss dealt a heavy blow! :dizzy_face:"
+      : (parseFloat(info.userDamage) >= 40 ? `${info.user} dealt a heavy blow! :boom:`
+      : `${info.user} attacked Boss :crossed_swords:`))
+    )
   }
 }
 
