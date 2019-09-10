@@ -34,6 +34,9 @@ const body = Joi.object({
       user: Joi.string(),
       class: Joi.string(),
       spell: Joi.string(),
+      quest: Joi.string(),
+      userDamage: Joi.string(),
+      bossDamage: Joi.string(),
     }),
 
     timestamp: Joi.date().iso(),
