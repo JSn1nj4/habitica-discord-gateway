@@ -94,9 +94,9 @@ class PartyChatController {
 
     // Message options for boss_damage notifications
     if(info.type === 'boss_damage') {
-      if(parseInt(info.userDamage) <= 0) return "Oh no, **look out!** :scream_cat:"
-      if(parseInt(info.bossDamage) >= 10) return "Boss dealt a heavy blow! :dizzy_face:"
-      if(parseInt(info.userDamage) >= 40) return `${info.user} dealt a heavy blow! :boom:`
+      if(parseFloat(info.userDamage) <= 0) return "Oh no, **look out!** :scream_cat:"
+      if(parseFloat(info.bossDamage) >= 10) return "Boss dealt a heavy blow! :dizzy_face:"
+      if(parseFloat(info.userDamage) >= 40) return `${info.user} dealt a heavy blow! :boom:`
 
       // default message for `boss_damage` chat type
       return `${info.user} attacked Boss :crossed_swords:`
