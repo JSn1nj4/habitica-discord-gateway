@@ -83,8 +83,8 @@ class PartyChatController {
 
   buildMainMessageContent(info, defaultMsg) {
     const types = {
-      spell_cast_party: "**Party Buffed** :muscle:",
-      spell_cast_user: "**Party Member Pranked** :laughing:",
+      spell_cast_party: "Party Buffed :muscle:",
+      spell_cast_user: "Party Member Pranked :laughing:",
       boss_damage: this.buildBossDamageMessage // method used to get `boss_damage` message
     }
 
@@ -96,7 +96,7 @@ class PartyChatController {
 
   buildBossDamageMessage(info) {
     return (
-      parseFloat(info.userDamage) <= 0 ? "**Oh no, look out!** :scream_cat:"
+      parseFloat(info.userDamage) <= 0 ? "Oh no, look out! :scream_cat:"
       : (parseFloat(info.bossDamage) >= 10 ? "Boss dealt a heavy blow! :dizzy_face:"
       : (parseFloat(info.userDamage) >= 40 ? `${info.user} dealt a heavy blow! :boom:`
       : `${info.user} attacked Boss :crossed_swords:`))
