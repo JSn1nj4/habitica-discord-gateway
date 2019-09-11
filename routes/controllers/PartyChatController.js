@@ -17,7 +17,7 @@ class PartyChatController {
   }
 
   async checkMessage(req) {
-    console.log(req.body)
+    console.log(JSON.stringify(req.body))
     messageSchemas.body.validate(req.body)
       .then(this.sendMessage.bind(this))
       .catch(this.logError.bind(this))
@@ -25,7 +25,7 @@ class PartyChatController {
 
   sendMessage(data) {
     // console.log('Validated body object: ')
-    // console.log(data)
+    // console.log(JSON.stringify(data))
 
     let msg = {
       content: "**New Party Notification** :bell:",
@@ -89,7 +89,7 @@ class PartyChatController {
     }
 
     let msg = types[info.type]
-    if( msg.call ) msg = msg.call(this, info)
+    if( msg && msg.call ) msg = msg.call(this, info)
 
     return msg || defaultMsg
   }
