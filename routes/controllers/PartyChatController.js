@@ -28,7 +28,7 @@ class PartyChatController {
     // console.log(JSON.stringify(data))
 
     let msg = {
-      content: "**New Party Notification** :bell:",
+      content: "New Party Notification :bell:",
       embeds: [
         {
           title: data.group.name,
@@ -42,7 +42,7 @@ class PartyChatController {
 
     if(data.chat.username) {
       msg.embeds[0].author = { name: data.chat.username }
-      msg.content = "**New Chat Message** :speech_balloon:"
+      msg.content = "New Chat Message :speech_balloon:"
     }
 
     if(data.chat.info && data.chat.info !== {}) {
