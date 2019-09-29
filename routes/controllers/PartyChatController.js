@@ -83,9 +83,9 @@ class PartyChatController {
 
   buildMainMessageContent(info, defaultMsg) {
     const types = {
+      boss_damage: this.buildBossDamageMessage, // method used to get `boss_damage` message
       spell_cast_party: "Party Buffed :muscle:",
       spell_cast_user: "Party Member Pranked :laughing:",
-      boss_damage: this.buildBossDamageMessage // method used to get `boss_damage` message
     }
 
     let msg = types[info.type]
