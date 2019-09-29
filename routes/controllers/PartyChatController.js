@@ -84,6 +84,8 @@ class PartyChatController {
   buildMainMessageContent(info, defaultMsg) {
     const types = {
       boss_damage: this.buildBossDamageMessage, // method used to get `boss_damage` message
+      boss_defeated: "Boss defeated! :tada::tada::tada:",
+      quest_start: "Your quest has started! :scroll:",
       spell_cast_party: "Party Buffed :muscle:",
       spell_cast_user: "Party Member Pranked :laughing:",
     }
