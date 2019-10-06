@@ -1,0 +1,24 @@
+{
+  "name": "habitica-discord-gateway",
+  "version": "1.0.0",
+  "description": "A set of APIs for working with your Habitica party",
+  "main": "app.js",
+  "repository": "git@github.com:JSn1nj4/habitica-discord-gateway.git",
+  "author": "Elliot Derhay <e.j.derhay@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "10.16.3",
+    "yarn": "1.17.3"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "node app.js",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "@hapi/joi": "^15.1.1",
+    "@sentry/node": "5.6.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
