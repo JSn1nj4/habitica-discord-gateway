@@ -1,6 +1,6 @@
 {
   "name": "habitica-discord-gateway",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A set of APIs for working with your Habitica party",
   "main": "app.js",
   "repository": "git@github.com:JSn1nj4/habitica-discord-gateway.git",
