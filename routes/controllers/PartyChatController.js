@@ -112,8 +112,9 @@ class PartyChatController {
   }
 
   messageTypeAllowed(info) {
+    console.log(`MSG_TYPE_BLACKLIST: ${JSON.stringify(process.env.MSG_TYPE_BLACKLIST)}`)
+
     if(!process.env.MSG_TYPE_BLACKLIST) {
-      console.log(`MSG_TYPE_BLACKLIST: ${process.env.MSG_TYPE_BLACKLIST}`)
       return true;
     }
 
@@ -121,8 +122,12 @@ class PartyChatController {
       process.env.MSG_TYPE_BLACKLIST.split(',') : // split comma-separated list into array
       [process.env.MSG_TYPE_BLACKLIST] // return value within new array
 
+    console.log(`blacklist: ${JSON.stringify(blacklist)}`)
+
     // Remove any extra whitespace surrounding values, including line endings
     blacklist = blacklist.map(val => val.trim())
+
+    console.log(`blacklist trimmed: ${JSON.stringify(blacklist)}`)
 
     return blacklist.includes(info.type)
   }
