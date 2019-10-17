@@ -63,6 +63,10 @@ class PartyChatController {
       }
     }
 
+    if(this.messageTypeDisallowed(data.chat.info)) {
+      return false;
+    }
+
     const req = https.request(options, (res) => {
       console.log(`statusCode ${res.statusCode}`)
 
@@ -105,6 +109,21 @@ class PartyChatController {
       : (parseFloat(info.userDamage) >= 40 ? `${info.user} dealt a heavy blow! :boom:`
       : `${info.user} attacked Boss :crossed_swords:`))
     )
+  }
+
+  messageTypeDisallowed(info) {
+    if(!process.env.MSG_TYPE_BLACKLIST) {
+      return true;
+    }
+
+    let blacklist = (process.env.MSG_TYPE_BLACKLIST.indexOf(',') >= 0) ? // check it's a comma-separated list
+      process.env.MSG_TYPE_BLACKLIST.split(',') : // split comma-separated list into array
+      [process.env.MSG_TYPE_BLACKLIST] // return value within new array
+
+    // Remove any extra whitespace surrounding values, including line endings
+    blacklist = blacklist.map(val => val.trim())
+
+    return blacklist.includes(info.type)
   }
 }
 
