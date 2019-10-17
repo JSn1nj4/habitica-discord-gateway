@@ -113,6 +113,7 @@ class PartyChatController {
 
   messageTypeAllowed(info) {
     if(!process.env.MSG_TYPE_BLACKLIST) {
+      console.log(`MSG_TYPE_BLACKLIST: ${process.env.MSG_TYPE_BLACKLIST}`)
       return true;
     }
 
