@@ -63,7 +63,7 @@ class PartyChatController {
       }
     }
 
-    if(!this.messageTypeAllowed(data.chat.info)) {
+    if(this.messageTypeDisallowed(data.chat.info)) {
       return false;
     }
 
@@ -111,7 +111,7 @@ class PartyChatController {
     )
   }
 
-  messageTypeAllowed(info) {
+  messageTypeDisallowed(info) {
     console.log(`MSG_TYPE_BLACKLIST: ${JSON.stringify(process.env.MSG_TYPE_BLACKLIST)}`)
 
     if(!process.env.MSG_TYPE_BLACKLIST) {
